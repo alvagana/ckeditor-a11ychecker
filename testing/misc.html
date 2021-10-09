@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<style>
+		table, th, td {
+			border: 1px solid #333333;
+		}
+	</style>
+<h1>Table Accessibility Matters</h1>
+
+<p>This testing page is for testing out tables. Examining scope, captions, etc.</p>
+
+<h2>Checking for table scope on tables..</h2>
+
+<!--
+<h3>One header</h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>Header</th>
+			<th>Header</th>
+			<th>Header</th>
+			<th>Header</th>
+			<th>Header</th>
+			<th>Header</th>
+			<th>Header</th>
+			<th>Header</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+-->
+<h3>Two headers</h3>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>Shelly&#39;s Daughters, Scope + Header/Id</caption>
+	<tbody>
+		<tr>
+			<th scope="col" id="a1">Name</th>
+			<th scope="col" id="a2">Age</th>
+			<th scope="col" id="a3">Birthday</th>
+		</tr>
+		<tr>
+			<th scope="row" id="a4">Jackie</th>
+			<td headers="a2 a4">5</td>
+			<td headers="a3 a4">April 5</td>
+		</tr>
+		<tr>
+			<th scope="row" id="a5">Beth</th>
+			<td headers="a2 a5">8</td>
+			<td headers="a3 a5">January 14</td>
+		</tr>
+		<tr>
+			<th scope="row" id="a6">Jason</th>
+			<td headers="a2 a6">9</td>
+			<td headers="a3 a6">February 14</td>
+		</tr>
+		<tr>
+			<th scope="row" id="a7">Nicole</th>
+			<td headers="a2 a7">6</td>
+			<td headers="a3 a7">July 3</td>
+		</tr>
+		<tr>
+			<th scope="row" id="a8">Mark</th>
+			<td headers="a2 a8">7</td>
+			<td headers="a3 a8">December 16</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>Shelly&#39;s Daughters, Scope Only</caption>
+	<tbody>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Age</th>
+			<th scope="col">Birthday</th>
+		</tr>
+		<tr>
+			<th scope="row">Jackie</th>
+			<td>5</td>
+			<td>April 5</td>
+		</tr>
+		<tr>
+			<th scope="row">Beth</th>
+			<td>8</td>
+			<td>January 14</td>
+		</tr>
+		<tr>
+			<th scope="row">Jason</th>
+			<td>9</td>
+			<td>February 14</td>
+		</tr>
+		<tr>
+			<th scope="row">Nicole</th>
+			<td>6</td>
+			<td>July 3</td>
+		</tr>
+		<tr>
+			<th scope="row">Mark</th>
+			<td>7</td>
+			<td>December 16</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>Shelly&#39;s Daughters, Header/Id Only</caption>
+	<tbody>
+		<tr>
+			<th id="a1">Name</th>
+			<th id="a2">Age</th>
+			<th id="a3">Birthday</th>
+		</tr>
+		<tr>
+			<th id="a4">Jackie</th>
+			<td headers="a2 a4">5</td>
+			<td headers="a3 a4">April 5</td>
+		</tr>
+		<tr>
+			<th id="a5">Beth</th>
+			<td headers="a2 a5">8</td>
+			<td headers="a3 a5">January 14</td>
+		</tr>
+		<tr>
+			<th id="a6">Jason</th>
+			<td headers="a2 a6">9</td>
+			<td headers="a3 a6">February 14</td>
+		</tr>
+		<tr>
+			<th id="a7">Nicole</th>
+			<td headers="a2 a7">6</td>
+			<td headers="a3 a7">July 3</td>
+		</tr>
+		<tr>
+			<th id="a8">Mark</th>
+			<td headers="a2 a8">7</td>
+			<td headers="a3 a7">December 16</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<!--
+<h3>Two headers with no left corner</h3>
+
+<p>&nbsp;</p>
+
+<table summary="Shelly's Daughters">
+	<caption>Shelly&#39;s Daughters</caption>
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<th scope="col">Age</th>
+			<th scope="col">Birthday</th>
+		</tr>
+		<tr>
+			<th scope="row">Jackie</th>
+			<td>5</td>
+			<td>April 5</td>
+		</tr>
+		<tr>
+			<th scope="row">Beth</th>
+			<td>8</td>
+			<td>January 14</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h3>Table with offset headers</h3>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>Holidays taken in the last six months</caption>
+	<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">Name</th>
+			<th scope="col">July</th>
+			<th scope="col">August</th>
+			<th scope="col">September</th>
+			<th scope="col">October</th>
+			<th scope="col">November</th>
+			<th scope="col">December</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>215</td>
+			<th scope="row">Abel</th>
+			<td>5</td>
+			<td>2</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>231</td>
+			<th scope="row">Annette</th>
+			<td>0</td>
+			<td>5</td>
+			<td>3</td>
+			<td>0</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>173</td>
+			<th scope="row">Bernard</th>
+			<td>2</td>
+			<td>0</td>
+			<td>0</td>
+			<td>5</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>141</td>
+			<th scope="row">Gerald</th>
+			<td>0</td>
+			<td>10</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>99</td>
+			<th scope="row">Michael</th>
+			<td>8</td>
+			<td>8</td>
+			<td>8</td>
+			<td>8</td>
+			<td>0</td>
+			<td>4</td>
+		</tr>
+	</tbody>
+</table>
+-->
+<p>&nbsp;</p>
+
+<h3>Table with irregular headers</h3>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>Irregular headers</caption>
+	<tbody>
+		<tr>
+			<td rowspan="2">&nbsp;</td>
+			<th colspan="2" scope="colgroup">Mars</th>
+			<th colspan="2" scope="colgroup">Venus</th>
+		</tr>
+		<tr>
+			<th scope="col">Produced</th>
+			<th scope="col">Sold</th>
+			<th scope="col">Produced</th>
+			<th scope="col">Sold</th>
+		</tr>
+		<tr>
+			<th scope="row">Teddy Bears</th>
+			<td>50,000</td>
+			<td>30,000</td>
+			<td>100,000</td>
+			<td>80,000</td>
+		</tr>
+		<tr>
+			<th scope="row">Board Games</th>
+			<td>10,000</td>
+			<td>5,000</td>
+			<td>12,000</td>
+			<td>9,000</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h3>Row Groups</h3>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>Poster availability</caption>
+	<thead>
+		<tr>
+			<th scope="col">Poster name</th>
+			<th scope="col">Color</th>
+			<th colspan="3" scope="colgroup">Sizes available</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th rowspan="3" scope="rowgroup">Zodiac</th>
+			<th scope="row">Full color</th>
+			<td>A2</td>
+			<td>A3</td>
+			<td>A4</td>
+		</tr>
+		<tr>
+			<th scope="row">Black and white</th>
+			<td>A1</td>
+			<td>A2</td>
+			<td>A3</td>
+		</tr>
+		<tr>
+			<th scope="row">Sepia</th>
+			<td>A3</td>
+			<td>A4</td>
+			<td>A5</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="2" scope="rowgroup">Angels</th>
+			<th scope="row">Black and white</th>
+			<td>A1</td>
+			<td>A3</td>
+			<td>A4</td>
+		</tr>
+		<tr>
+			<th scope="row">Sepia</th>
+			<td>A2</td>
+			<td>A3</td>
+			<td>A5</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<!--
+<h3>Complex table example</h3>
+
+<p>&nbsp;</p>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="8" scope="colgroup">Top Presidential Candidates 2008</th>
+		</tr>
+		<tr>
+			<th colspan="4" scope="colgroup">Democratic</th>
+			<th colspan="4" scope="colgroup">Republican</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Name</td>
+			<td>Del</td>
+			<td>Name</td>
+			<td>Del</td>
+			<td>Name</td>
+			<td>Del</td>
+			<td>Name</td>
+			<td>Del</td>
+		</tr>
+		<tr>
+			<td>Obama</td>
+			<td>1828.5</td>
+			<td>Clinton</td>
+			<td>1726.5</td>
+			<td>McCain</td>
+			<td>1575</td>
+			<td>Huckabee</td>
+			<td>278</td>
+		</tr>
+	</tbody>
+</table>
+-->
+
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+
+<table>
+	<caption>Items Sold August 2016</caption>
+	<thead>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="3" scope="colgroup">Clothes</th>
+			<th colspan="2" scope="colgroup">Accessories</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<th scope="col">Trousers</th>
+			<th scope="col">Skirts</th>
+			<th scope="col">Dresses</th>
+			<th scope="col">Bracelets</th>
+			<th scope="col">Rings</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th rowspan="3" scope="rowgroup">Belgium</th>
+			<th scope="row">Antwerp</th>
+			<td>56</td>
+			<td>22</td>
+			<td>43</td>
+			<td>72</td>
+			<td>23</td>
+		</tr>
+		<tr>
+			<th scope="row">Gent</th>
+			<td>46</td>
+			<td>18</td>
+			<td>50</td>
+			<td>61</td>
+			<td>15</td>
+		</tr>
+		<tr>
+			<th scope="row">Brussels</th>
+			<td>51</td>
+			<td>27</td>
+			<td>38</td>
+			<td>69</td>
+			<td>28</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="2" scope="rowgroup">The Netherlands</th>
+			<th scope="row">Amsterdam</th>
+			<td>89</td>
+			<td>34</td>
+			<td>69</td>
+			<td>85</td>
+			<td>38</td>
+		</tr>
+		<tr>
+			<th scope="row">Utrecht</th>
+			<td>80</td>
+			<td>12</td>
+			<td>43</td>
+			<td>36</td>
+			<td>19</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>Supplier contacts</caption>
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<th scope="col">Example 1 Ltd</th>
+			<th scope="col">Example 2 Co</th>
+		</tr>
+		<tr>
+			<th scope="row">Contact</th>
+			<td>James Phillips</td>
+			<td>Marie Beauchamp</td>
+		</tr>
+		<tr>
+			<th scope="row">Position</th>
+			<td>Sales Director</td>
+			<td>Sales Manager</td>
+		</tr>
+		<tr>
+			<th scope="row">Email</th>
+			<td>jp@1ltd.example.com</td>
+			<td>marie@2co.example.com</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<th scope="col">Example 3 Ltd</th>
+			<th scope="col">Example 4 Inc</th>
+		</tr>
+		<tr>
+			<th scope="row">Contact</th>
+			<td>Suzette Jones</td>
+			<td>Alex Howe</td>
+		</tr>
+		<tr>
+			<th scope="row">Position</th>
+			<td>Sales Officer</td>
+			<td>Sales Director</td>
+		</tr>
+		<tr>
+			<th scope="row">Email</th>
+			<td>Suz@ltd3.example.com</td>
+			<td>howe@4inc.example.com</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<!-- 
+			TO DO
+
+			--></p>
+
+<p>&nbsp;</p>
+
+
+<table summary="Column one has the location and size of accommodation, other columns show the type and number of properties available">
+<caption>
+    Availability of holiday accommodation
+</caption>
+<thead>
+    <tr>
+        <td></td>
+        <th id="stud" scope="col">
+            Studio
+        </th>
+        <th id="apt" scope="col">
+            <abbr title="Apartment">Apt</abbr>
+        </th>
+        <th id="chal" scope="col">
+            Chalet
+        </th>
+        <th id="villa" scope="col">
+            Villa
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <th id="par" class="span" colspan="5" scope="colgroup">
+            Paris
+        </th>
+    </tr>
+    <tr>
+        <th headers="par" id="pbed1">
+            1 bedroom
+        </th>
+        <td headers="par pbed1 stud">
+            11
+        </td>
+        <td headers="par pbed1 apt">
+            20
+        </td>
+        <td headers="par pbed1 chal">
+            25
+        </td>
+        <td headers="par pbed1 villa">
+            23
+        </td>
+    </tr>
+    <tr>
+        <th headers="par" id="pbed2">
+            2 bedroom
+        </th>
+        <td headers="par pbed2 stud">
+            -
+        </td>
+        <td headers="par pbed2 apt">
+            43
+        </td>
+        <td headers="par pbed2 chal">
+            52
+        </td>
+        <td headers="par pbed2 villa">
+            32
+        </td>
+    </tr>
+    <tr>
+        <th headers="par" id="pbed3">
+            3 bedroom
+        </th>
+        <td headers="par pbed3 stud">
+            -
+        </td>
+        <td headers="par pbed3 apt">
+            13
+        </td>
+        <td headers="par pbed3 chal">
+            15
+        </td>
+        <td headers="par pbed3 villa">
+            40
+        </td>
+    </tr>
+    <tr>
+        <th id="rome" class="span" colspan="5" scope="colgroup">
+            Rome
+        </th>
+    </tr>
+    <tr>
+        <th id="rbed1" headers="rome">
+            1 bedroom
+        </th>
+        <td headers="rome rbed1 stud">
+            13
+        </td>
+        <td headers="rome rbed1 apt">
+            21
+        </td>
+        <td headers="rome rbed1 chal">
+            22
+        </td>
+        <td headers="rome rbed1 villa">
+            3
+        </td>
+    </tr>
+    <tr>
+        <th id="rbed2" headers="rome">
+            2 bedroom
+        </th>
+        <td headers="rome rbed2 stud">
+            -
+        </td>
+        <td headers="rome rbed2 apt">
+            23
+        </td>
+        <td headers="rome rbed2 chal">
+            43
+        </td>
+        <td headers="rome rbed2 villa">
+            30
+        </td>
+    </tr>
+    <tr>
+        <th id="rbed3" headers="rome">
+            3 bedroom
+        </th>
+        <td headers="rome rbed3 stud">
+            -
+        </td>
+        <td headers="rome rbed3 apt">
+            16
+        </td>
+        <td headers="rome rbed3 chal">
+            32
+        </td>
+        <td headers="rome rbed3 villa">
+            40
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<table>
+	<caption>A complex table</caption>
+	<thead>
+		<tr>
+			<th colspan="3" scope="colgroup">Invoice #123456789</th>
+			<th scope="col">14 January 2025</th>
+		</tr>
+		<tr>
+			<td colspan="2"><strong>Pay to:</strong><br />
+			Acme Billing Co.<br />
+			123 Main St.<br />
+			Cityville, NA 12345</td>
+			<td colspan="2"><strong>Customer:</strong><br />
+			John Smith<br />
+			321 Willow Way<br />
+			Southeast Northwestershire, MA 54321</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="col">Name / Description</th>
+			<th scope="col">Qty.</th>
+			<th scope="col">@</th>
+			<th scope="col">Cost</th>
+		</tr>
+		<tr>
+			<td>Paperclips</td>
+			<td>1000</td>
+			<td>0.01</td>
+			<td>10.00</td>
+		</tr>
+		<tr>
+			<td>Staples (box)</td>
+			<td>100</td>
+			<td>1.00</td>
+			<td>100.00</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th colspan="3" scope="row">Subtotal</th>
+			<td>110.00</td>
+		</tr>
+		<tr>
+			<th colspan="2" scope="row">Tax</th>
+			<td>8%</td>
+			<td>8.80</td>
+		</tr>
+		<tr>
+			<th colspan="3" scope="row">Grand Total</th>
+			<td>$ 118.80</td>
+		</tr>
+	</tfoot>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<!--
+<table border="1">
+	<caption>Titulo de tabla</caption>
+	<thead>
+		<tr>
+			<th rowspan="2" scope="rowgroup">Tabla Avanzada</th>
+			<th colspan="2" scope="colgroup">Cabecera M&uacute;ltiples Columnas</th>
+		</tr>
+		<tr>
+			<th scope="col">Primera Col. Cab.</th>
+			<th scope="col">Segunda Col. Cab.</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Fila 1</th>
+			<td>Fila 1 Columna 1</td>
+			<td>Fila 1 Columna 2</td>
+		</tr>
+		<tr>
+			<th scope="row">Fila 2</th>
+			<td>Fila 2 Columna 1</td>
+			<td>Fila 2 Columna 2</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">Pie de tabla.</td>
+		</tr>
+	</tfoot>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table>
+	<thead>
+		<tr>
+			<td colspan="2" rowspan="2">Empty</td>
+			<th colspan="3" scope="colgroup">Colgroup</th>
+		</tr>
+		<tr>
+			<th scope="col">Col</th>
+			<th scope="col">Col</th>
+			<th scope="col">Col</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th colspan="2" scope="row">Row</th>
+			<td>Data</td>
+			<td>Data</td>
+			<td>Data</td>
+		</tr>
+		<tr>
+			<th colspan="2" scope="row">Row</th>
+			<td>Data</td>
+			<td>Data</td>
+			<td>Data</td>
+		</tr>
+		<tr>
+			<th colspan="1" rowspan="2" scope="rowgroup">Rowgroup</th>
+			<th scope="row">Row</th>
+			<td>Data</td>
+			<td>Data</td>
+			<td rowspan="2">Data</td>
+		</tr>
+		<tr>
+			<th scope="row">Row</th>
+			<td>Data</td>
+			<td>Data</td>
+		</tr>
+	</tbody>
+</table>
+<br/>
+<br/>
+-->
+<table>
+<caption>Travel Expense Report</caption>
+<tbody>
+<tr>
+  <td></td>
+  <th id="a2" scope="col">Meals</th>
+  <th id="a3" scope="col">Hotels</th>
+  <th id="a4" scope="col">Transport</th>
+  <th scope="col" id="b2">subtotals</th>
+</tr>
+
+<tr>
+  <th id="a6" scope="col">San Jose</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <td></td>
+</tr>
+<tr>
+  <th id="a7" scope="row">25-Aug-97</th>
+  <td headers="a6 a7 a2">37.74</td>
+  <td headers="a6 a7 a3">112.00</td>
+  <td headers="a6 a7 a4">45.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th id="a8" scope="row">26-Aug-97</th>
+  <td headers="a6 a8 a2">27.28</td>
+  <td headers="a6 a8 a3">112.00</td>
+  <td headers="a6 a8 a4">45.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th scope="row" id="b1">subtotals</th>
+  <td header="b1">65.02</td>
+  <td header="b1">224.00</td>
+  <td header="b1">90.00</td>
+  <td header="b1 b2">379.02</td>
+</tr>
+<tr>
+  <th id="a10" >Seattle</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <td></td>
+</tr>
+<tr>
+  <th id="a11" scope="row">27-Aug-97</th>
+  <td headers="a10 a11 a2">96.25</td>
+  <td headers="a10 a11 a3">109.00</td>
+  <td headers="a10 a11 a4">36.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th id="a12" scope="row">28-Aug-97</th>
+  <td headers="a10 a12 a2">35.00</td>
+  <td headers="a10 a12 a3">109.00</td>
+  <td headers="a10 a12 a4">36.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th scope="row" id="b3">subtotals</th>
+  <td headers="b3">131.25</td>
+  <td headers="b3">218.00</td>
+  <td headers="b3">72.00</td>
+  <td headers="b3">421.25</td>
+</tr>
+<tr>
+  <th scope="row">Totals</th>
+  <td>196.27</td>
+  <td>442.00</td>
+  <td>162.00</td>
+  <td>800.27</td>
+</tr>
+</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<br/>
+<table>
+	<caption>Travel Expense Report</caption>
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<th scope="col">Meals</th>
+			<th scope="col">Hotels</th>
+			<th scope="col">Transport</th>
+			<th scope="col">subtotals</td>
+		</tr>
+		<tr>
+			<th scope="col">San Jose</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th scope="row">25-Aug-97</th>
+			<td>37.74</td>
+			<td>112.00</td>
+			<td>45.00</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th scope="row">26-Aug-97</th>
+			<td>27.28</td>
+			<td>112.00</td>
+			<td>45.00</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th scope="row">subtotals</td>
+			<td>65.02</td>
+			<td>224.00</td>
+			<td>90.00</td>
+			<td>379.02</td>
+		</tr>
+		<tr>
+			<th scope="row">Seattle</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th scope="row">27-Aug-97</th>
+			<td>96.25</td>
+			<td>109.00</td>
+			<td>36.00</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th scope="row">28-Aug-97</th>
+			<td>35.00</td>
+			<td>109.00</td>
+			<td>36.00</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th scope="row">subtotals</td>
+			<td>131.25</td>
+			<td>218.00</td>
+			<td>72.00</td>
+			<td>421.25</td>
+		</tr>
+		<tr>
+			<th scope="row">Totals</th>
+			<td>196.27</td>
+			<td>442.00</td>
+			<td>162.00</td>
+			<td>800.27</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<style type="text/css">
+   table.tableizer-table {
+   font-size: 12px;
+   border: 1px solid #CCC; 
+   font-family: Arial, Helvetica, sans-serif;
+   } 
+   .tableizer-table td {
+   padding: 4px;
+   margin: 3px;
+   border: 1px solid #CCC;
+   }
+   .tableizer-table th {
+   background-color: #104E8B; 
+   color: #FFF;
+   font-weight: bold;
+   }
+</style>
+<table class="tableizer-table">
+   <thead>
+      <tr class="tableizer-firstrow">
+         <th>Region</th>
+         <th>Gold (t/y)</th>
+         <th>Copper (10³t/y)</th>
+         <th>Zinc (10³ t/y)</th>
+         <th>Nickel (10³t/y)</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>NL</td>
+         <td>0.61</td>
+         <td>56.3</td>
+         <td>12.2</td>
+         <td>60.1</td>
+      </tr>
+      <tr>
+         <td>PE</td>
+         <td>-</td>
+         <td>-</td>
+         <td>-</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>NS</td>
+         <td>-</td>
+         <td>-</td>
+         <td>-</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>NB</td>
+         <td>0.07</td>
+         <td>3.2</td>
+         <td>60.4</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>QC</td>
+         <td>35</td>
+         <td>25</td>
+         <td>130</td>
+         <td>32.1</td>
+      </tr>
+      <tr>
+         <td>ON</td>
+         <td>59.2</td>
+         <td>212</td>
+         <td>67.2</td>
+         <td>95.3</td>
+      </tr>
+      <tr>
+         <td>MB</td>
+         <td>5</td>
+         <td>30.4</td>
+         <td>79.8</td>
+         <td>27.1</td>
+      </tr>
+      <tr>
+         <td>SK</td>
+         <td>2.1</td>
+         <td>0.9</td>
+         <td>3.9</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>AB</td>
+         <td>0.03</td>
+         <td>-</td>
+         <td>-</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>BC</td>
+         <td>6</td>
+         <td>267</td>
+         <td>22.3</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>YK</td>
+         <td>2.8</td>
+         <td>18.4</td>
+         <td>68.6</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>NT</td>
+         <td>-</td>
+         <td>0.3</td>
+         <td>-</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <td>NU</td>
+         <td>13.1</td>
+         <td>-</td>
+         <td>-</td>
+         <td>-</td>
+      </tr>
+      <tr>
+         <th>Canada</td>
+         <td>124</td>
+         <td>613</td>
+         <td>414</td>
+         <td>215</td>
+      </tr>
+      <tr>
+         <th>Value ($109)</td>
+         <td>$5.90</td>
+         <td>$4.60</td>
+         <td>$0.81</td>
+         <td>$3.40</td>
+      </tr>
+   </tbody>
+</table>
+
+
+</body>
+</html>

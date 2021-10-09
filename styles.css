@@ -1,0 +1,23 @@
+#header-test {
+	background-color: red;
+}
+
+#editor1 {
+	display: none;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+/* COLOR CONTRAST TESTING */
+h1, h3 {
+	background-color: yellow;
+	color: white;
+}
+
+
+.c {
+	color: red;
+	background-color: orange;
+}

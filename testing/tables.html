@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Testing tables/title</title>
+        <script src="../ckeditor.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script src="../scripts/require.js"></script>
+        <link rel="stylesheet" href="styles.css"/> 
+    </head>
+    <body>
+    	<textarea id="editor1" name="editor1" > 
+    		<h1>Table Accessibility Matters</h1>
+    		<p>This testing page is for testing out tables. Examining scope, captions, etc.</p>
+
+			<h2>Checking for table scope on tables..</h2>
+			<h3>One header</h3>
+			<table>
+			  <thead>
+			    <tr>
+			      <th>Header</th>
+			      <th>Header</th>
+			      <th>Header</th>
+			      <th>Header</th>
+			      <th>Header</th>
+			      <th>Header</th>
+			      <th>Header</th>
+			      <th>Header</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			    </tr>
+			    <tr>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			    </tr>
+			    <tr>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			    </tr>
+			    <tr>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			    </tr>
+			    <tr>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			      <td>Cell</td>
+			    </tr>
+			  </tbody>
+			</table>
+
+
+			<br/>
+
+			<h3>Two headers</h3>
+			<table>
+				<caption>Shelly's Daughters</caption>
+
+
+				<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Birthday</th>
+				</tr>
+
+				<tr>
+				<th>Jackie</th>
+				<td>5</td>
+				<td>April 5</td>
+				</tr>
+
+				<tr>
+				<th>Beth</th>
+				<td>8</td>
+				<td>January 14</td>
+				</tr>
+
+				<tr>
+				<th>Jason</th>
+				<td>9</td>
+				<td>February 14</td>
+				</tr>
+
+				<tr>
+				<th>Nicole</th>
+				<td>6</td>
+				<td>July 3</td>
+				</tr>
+
+				<tr>
+				<th>Mark</th>
+				<td>7</td>
+				<td>December 16</td>
+				</tr>
+
+			</table>
+			<br/>
+
+			<h3>Two headers with no left corner</h3>
+			<table summary="Shelly's Daughters">
+				<caption>Shelly's Daughters</caption>
+
+				<tr>
+				<td></td>
+				<th>Age</th>
+				<th>Birthday</th>
+				</tr>
+
+				<tr>
+				<th>Jackie</th>
+				<td>5</td>
+				<td>April 5</td>
+				</tr>
+
+				<tr>
+				<th>Beth</th>
+				<td>8</td>
+				<td>January 14</td>
+				</tr>
+
+			</table>
+			<br/>
+
+			<h3>Table with offset headers</h3>
+			<table>
+			  <caption>
+			    Holidays taken in the last six months 
+			  </caption >
+			  <thead>
+			    <tr>
+			      <th><abbr title="Identification Number">ID</abbr></th>
+			      <th>Name</th>
+			      <th>July</th>
+			      <th>August</th>
+			      <th>September</th>
+			      <th>October</th>
+			      <th>November</th>
+			      <th>December</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <tr>
+			      <td>215</td>
+			      <th>Abel</th>
+			      <td>5</td>
+			      <td>2</td>
+			      <td>0</td>
+			      <td>0</td>
+			      <td>0</td>
+			      <td>3</td>
+			    </tr>
+
+			    <tr>
+			      <td>231</td>
+			      <th>Annette </th>
+			      <td>0</td>
+			      <td>5</td>
+			      <td>3</td>
+			      <td>0</td>
+			    
+			      <td>6</td>
+			    </tr>
+
+			    <tr>
+			      <td>173</td>
+			      <th>Bernard</th>
+			      <td>2</td>
+			      <td>0</td>
+			      <td>0</td>
+			      <td>5</td>
+			      <td>0</td>
+			      <td>0</td>
+			    </tr>
+
+			    <tr>
+			      <td>141</td>
+			      <th>Gerald</th>
+			      <td>0</td>
+			      <td>10</td>
+			      <td>0</td>
+			      <td>0</td>
+			      <td>0</td>
+			      <td>8</td>
+			    </tr>
+
+			    <tr>
+			      <td>99</td>
+			      <th>Michael</th>
+			      <td>8</td>
+			      <td>8</td>
+			      <td>8</td>
+			      <td>8</td>
+			      <td>0</td>
+			      <td>4</td>
+			    </tr>
+			  </tbody>
+			</table>
+
+			<br/>
+
+			
+
+			<h3>Table with irregular headers</h3>
+			<table>
+			  <caption>Irregular headers</caption>
+			  <col>
+			  <colgroup span="2"></colgroup>
+			  <colgroup span="2"></colgroup>
+			  <tr>
+			    <td rowspan="2"></td>
+			    <th colspan="2">Mars</th>
+			    <th colspan="2">Venus</th>
+			  </tr>
+			  <tr>
+			    <th>Produced</th>
+			    <th>Sold</th>
+			    <th>Produced</th>
+			    <th>Sold</th>
+			  </tr>
+			  <tr>
+			    <th>Teddy Bears</th>
+			    <td>50,000</td>
+			    <td>30,000</td>
+			    <td>100,000</td>
+			    <td>80,000</td>
+			  </tr>
+			  <tr>
+			    <th>Board Games</th>
+			    <td>10,000</td>
+			    <td>5,000</td>
+			    <td>12,000</td>
+			    <td>9,000</td>
+			  </tr>
+			</table>
+
+			<br/>
+			<h3>Row Groups</h3>
+			<table>
+				  <caption>
+				    Poster availability
+				  </caption>
+				  <col>
+				  <col>
+				  <colgroup span="3"></colgroup>
+				  <thead>
+				    <tr>
+				      <th>Poster name</th>
+				      <th>Color</th>
+				      <th colspan="3">Sizes available</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th rowspan="3">Zodiac</th>
+				      <th>Full color</th>
+				      <td>A2</td>
+				      <td>A3</td>
+				      <td>A4</td>
+				    </tr>
+				    <tr>
+				      <th>Black and white</th>
+				      <td>A1</td>
+				      <td>A2</td>
+				      <td>A3</td>
+				    </tr>
+				    <tr>
+				      <th>Sepia</th>
+				      <td>A3</td>
+				      <td>A4</td>
+				      <td>A5</td>
+				    </tr>
+				  </tbody>
+				  <tbody>
+				    <tr>
+				      <th rowspan="2">Angels</th>
+				      <th>Black and white</th>
+				      <td>A1</td>
+				      <td>A3</td>
+				      <td>A4</td>
+				    </tr>
+				    <tr>
+				      <th>Sepia</th>
+				      <td>A2</td>
+				      <td>A3</td>
+				      <td>A5</td>
+				    </tr>
+				  </tbody>
+				</table>
+			
+			<br/>
+			<h3>Complex table example</h3>
+			<table>
+				<thead>
+					<tr>
+						<th colspan="8">Top Presidential Candidates 2008</th>
+					</tr>
+					<tr>
+						<th colspan="4">Democratic</th>
+						<th colspan="4">Republican</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Name</td>
+						<td>Del</td>
+						<td>Name</td>
+						<td>Del</td>
+						<td>Name</td>
+						<td>Del</td>
+						<td>Name</td>
+						<td>Del</td>
+					</tr>
+					<tr>
+						<td>Obama</td>
+						<td>1828.5</td>
+						<td>Clinton</td>
+						<td>1726.5</td>
+						<td>McCain</td>
+						<td>1575</td>
+						<td>Huckabee</td>
+						<td>278</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br/>
+
+			<br/>
+
+			<table>
+				<caption>Items Sold August 2016</caption>
+				<thead>
+					<tr>
+						<td></td>
+						<td></td>
+						<th colspan="3">Clothes</th>
+						<th colspan="2">Accessories</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<th>Trousers</th>
+						<th>Skirts</th>
+						<th>Dresses</th>
+						<th>Bracelets</th>
+						<th>Rings</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th rowspan="3">Belgium</th>
+						<th>Antwerp</th>
+						<td>56</td>
+						<td>22</td>
+						<td>43</td>
+						<td>72</td>
+						<td>23</td>
+					</tr>
+					<tr>
+						<th>Gent</th>
+						<td>46</td>
+						<td>18</td>
+						<td>50</td>
+						<td>61</td>
+						<td>15</td>
+					</tr>
+					<tr>
+						<th>Brussels</th>
+						<td>51</td>
+						<td>27</td>
+						<td>38</td>
+						<td>69</td>
+						<td>28</td>
+					</tr>
+				</tbody>
+				<tbody>
+					<tr>
+						<th rowspan="2">The Netherlands</th>
+						<th>Amsterdam</th>
+						<td>89</td>
+						<td>34</td>
+						<td>69</td>
+						<td>85</td>
+						<td>38</td>
+					</tr>
+					<tr>
+						<th>Utrecht</th>
+						<td>80</td>
+						<td>12</td>
+						<td>43</td>
+						<td>36</td>
+						<td>19</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br/>
+
+			<table>
+				  <caption>
+				    Supplier contacts
+				  </caption>
+				  <tr>
+				    <th id="blank">&nbsp;</th>
+				    <th id="co1" headers="blank">Example 1 Ltd</th>
+				    <th id="co2" headers="blank">Example 2 Co</th>
+				  </tr>
+				  <tr>
+				    <th id="c1" headers="blank">Contact</th>
+				    <td headers="co1 c1">James Phillips</td>
+				    <td headers="co2 c1">Marie Beauchamp</td>
+				  </tr>
+				  <tr>
+				    <th id="p1"  headers="blank">Position</th>
+				    <td headers="co1 p1">Sales Director</td>
+				    <td headers="co2 p1">Sales Manager</td>
+				  </tr>
+				  <tr>
+				    <th id="e1"  headers="blank">Email</th>
+				    <td headers="co1 e1">jp@1ltd.example.com</td>
+				    <td headers="co2 e1">marie@2co.example.com</td>
+				  </tr>
+				  <tr>
+				    <th>&nbsp;</th>
+				    <th id="co3" headers="blank">Example 3 Ltd</th>
+				    <th id="co4" headers="blank">Example 4 Inc</th>
+				  </tr>
+				  <tr>
+				    <th id="c2"  headers="blank">Contact</th>
+				    <td headers="co3 c2">Suzette Jones</td>
+				    <td headers="co4 c2">Alex Howe</td>
+				  </tr>
+				  <tr>
+				    <th id="p2" headers="blank">Position</th>
+				    <td headers="co3 p2">Sales Officer</td>
+				    <td headers="co4 p2">Sales Director</td>
+				  </tr>
+				  <tr>
+				    <th id="e2" headers="blank">Email</th>
+				    <td headers="co3 e2">Suz@ltd3.example.com</td>
+				    <td headers="co4 e2">howe@4inc.example.com</td>
+				  </tr>
+			</table>
+
+			<br/>
+
+			<!-- 
+			TO DO
+
+			-->
+
+			<table summary="Column one has the location and size of accommodation, other columns show the type and number of properties available">
+					<caption>
+					    Availability of holiday accommodation
+					</caption>
+					<thead>
+					    <tr>
+					        <td></td>
+					        <th id="stud">
+					            Studio
+					        </th>
+					        <th id="apt">
+					            <abbr title="Apartment">Apt</abbr>
+					        </th>
+					        <th id="chal">
+					            Chalet
+					        </th>
+					        <th id="villa">
+					            Villa
+					        </th>
+					    </tr>
+					</thead>
+					<tbody>
+					    <tr>
+					        <th id="par" class="span" colspan="5">
+					            Paris
+					        </th>
+					    </tr>
+					    <tr>
+					        <th headers="par" id="pbed1">
+					            1 bedroom
+					        </th>
+					        <td headers="par pbed1 stud">
+					            11
+					        </td>
+					        <td headers="par pbed1 apt">
+					            20
+					        </td>
+					        <td headers="par pbed1 chal">
+					            25
+					        </td>
+					        <td headers="par pbed1 villa">
+					            23
+					        </td>
+					    </tr>
+					    <tr>
+					        <th headers="par" id="pbed2">
+					            2 bedroom
+					        </th>
+					        <td headers="par pbed2 stud">
+					            -
+					        </td>
+					        <td headers="par pbed2 apt">
+					            43
+					        </td>
+					        <td headers="par pbed2 chal">
+					            52
+					        </td>
+					        <td headers="par pbed2 villa">
+					            32
+					        </td>
+					    </tr>
+					    <tr>
+					        <th headers="par" id="pbed3">
+					            3 bedroom
+					        </th>
+					        <td headers="par pbed3 stud">
+					            -
+					        </td>
+					        <td headers="par pbed3 apt">
+					            13
+					        </td>
+					        <td headers="par pbed3 chal">
+					            15
+					        </td>
+					        <td headers="par pbed3 villa">
+					            40
+					        </td>
+					    </tr>
+					    <tr>
+					        <th id="rome" class="span" colspan="5">
+					            Rome
+					        </th>
+					    </tr>
+					    <tr>
+					        <th id="rbed1" headers="rome">
+					            1 bedroom
+					        </th>
+					        <td headers="rome rbed1 stud">
+					            13
+					        </td>
+					        <td headers="rome rbed1 apt">
+					            21
+					        </td>
+					        <td headers="rome rbed1 chal">
+					            22
+					        </td>
+					        <td headers="rome rbed1 villa">
+					            3
+					        </td>
+					    </tr>
+					    <tr>
+					        <th id="rbed2" headers="rome">
+					            2 bedroom
+					        </th>
+					        <td headers="rome rbed2 stud">
+					            -
+					        </td>
+					        <td headers="rome rbed2 apt">
+					            23
+					        </td>
+					        <td headers="rome rbed2 chal">
+					            43
+					        </td>
+					        <td headers="rome rbed2 villa">
+					            30
+					        </td>
+					    </tr>
+					    <tr>
+					        <th id="rbed3" headers="rome">
+					            3 bedroom
+					        </th>
+					        <td headers="rome rbed3 stud">
+					            -
+					        </td>
+					        <td headers="rome rbed3 apt">
+					            16
+					        </td>
+					        <td headers="rome rbed3 chal">
+					            32
+					        </td>
+					        <td headers="rome rbed3 villa">
+					            40
+					        </td>
+					    </tr>
+					</tbody>
+			</table>
+
+			<br/>
+
+			<table> 
+				<caption>A complex table</caption> 
+				<thead> 
+					<tr> 
+						<th colspan="3">Invoice #123456789</th> 
+						<th>14 January 2025 </th>
+					</tr> 
+					<tr> 
+						<td colspan="2"> <strong>Pay to:</strong><br> Acme Billing Co.<br> 123 Main St.<br> Cityville, NA 12345 </td> 
+						<td colspan="2"> <strong>Customer:</strong><br> John Smith<br> 321 Willow Way<br> Southeast Northwestershire, MA 54321 </td> 
+					</tr> 
+				</thead> 
+				<tbody> 
+					<tr> 
+						<th>Name / Description</th> 
+						<th>Qty.</th> 
+						<th>@</th> 
+						<th>Cost</th> 
+					</tr> 
+					<tr> 
+						<td>Paperclips</td> 
+						<td>1000</td> 
+						<td>0.01</td> 
+						<td>10.00</td> 
+					</tr> 
+					<tr> 
+						<td>Staples (box)</td> 
+						<td>100</td> <td>1.00</td> 
+						<td>100.00</td> 
+					</tr> 
+				</tbody> 
+				<tfoot> 
+					<tr> 
+						<th colspan="3">Subtotal</th> 
+						<td> 110.00</td> 
+					</tr> 
+					<tr> 
+						<th colspan="2">Tax</th> 
+						<td> 8% </td> 
+						<td>8.80</td> </tr> 
+						<tr> <th colspan="3">Grand Total</th> 
+						<td>$ 118.80</td> 
+					</tr> 
+				</tfoot> 
+			</table>
+			<br/>
+		
+			<table border="1" style=”width: 100%”>
+				<caption>Titulo de tabla</caption>
+				<colgroup>
+					<col style="width: 20%"/>
+					<col style="width: 40%"/>
+					<col style="width: 40%"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th rowspan="2">Tabla Avanzada</th>
+						<th colspan="2">Cabecera Múltiples Columnas</th>
+					</tr>
+					<tr>
+						<th>Primera Col. Cab.</th>
+						<th>Segunda Col. Cab.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Fila 1</th>
+						<td>Fila 1 Columna 1</td>
+						<td>Fila 1 Columna 2</td>
+					</tr>
+					<tr>
+						<th>Fila 2</th>
+						<td>Fila 2 Columna 1</td>
+						<td>Fila 2 Columna 2</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3">Pie de tabla.</td>
+					</tr>
+				</tfoot>
+			</table>
+
+			<br/>
+			<br/>
+		
+		
+			<table>
+				<thead>
+					<tr>
+						<td rowspan="2" colspan="2">Empty</td>
+						<th colspan="3">Colgroup</th>
+					</tr>
+					<tr>
+						<th>Col</th>
+						<th>Col</th>
+						<th>Col</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th colspan="2">Row</th>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+					</tr>
+					<tr>
+						<th colspan="2">Row</th>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+					</tr>
+					<tr>
+						<th rowspan="2" colspan="1">Rowgroup</th>
+						<th>Row</th>
+						<td>Data</td>
+						<td>Data</td>
+						<td rowspan="2">Data</td>
+					</tr>
+					<tr>
+						<th>Row</th>
+						<td>Data</td>
+						<td>Data</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br/>
+			<br/>
+			<table>
+<caption>Travel Expense Report</caption>
+<tbody>
+<tr>
+  <th></th>
+  <th>Meals</th>
+  <th>Hotels</th>
+  <th>Transport</th>
+  <th>subtotals</th>
+</tr>
+
+<tr>
+  <th>San Jose</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <td></td>
+</tr>
+<tr>
+  <th>25-Aug-97</th>
+  <td>37.74</td>
+  <td>112.00</td>
+  <td>45.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th>26-Aug-97</th>
+  <td>27.28</td>
+  <td>112.00</td>
+  <td>45.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th>subtotals</th>
+  <td>65.02</td>
+  <td>224.00</td>
+  <td>90.00</td>
+  <td>379.02</td>
+</tr>
+<tr>
+  <th >Seattle</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <td></td>
+</tr>
+<tr>
+  <th>27-Aug-97</th>
+  <td>96.25</td>
+  <td>109.00</td>
+  <td>36.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th>28-Aug-97</th>
+  <td>35.00</td>
+  <td>109.00</td>
+  <td>36.00</td>
+  <td></td>
+</tr>
+<tr>
+  <th>subtotals</th>
+  <td>131.25</td>
+  <td>218.00</td>
+  <td>72.00</td>
+  <td>421.25</td>
+</tr>
+<tr>
+  <th>Totals</th>
+  <td>196.27</td>
+  <td>442.00</td>
+  <td>162.00</td>
+  <td>800.27</td>
+</tr>
+</tbody>
+</table>
+		
+
+    	</textarea>
+
+        <script>
+		    // Performance optimization:
+		    // Send a request for tests JSON file ASAP, so it's likely to be ready when the user runs Acessibility Checker.
+		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
+
+		    CKEDITOR.replace('editor1', {
+		    
+		      extraPlugins: 'a11ychecker',
+		      removePlugins: 'scayt,wsc',
+		      height: 500,
+		      a11ychecker_quailParams: {
+		        jsonPath: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail',
+		        // Override Accessibility Checker guidelines from the default configuration.
+		        guideline: [
+				  // Table tests
+				  /*
+					"tableAxisHasCorrespondingId",
+				    "tabIndexFollowsLogicalOrder",
+				    "tableCaptionIdentifiesTable",
+				    ,
+				    "tableDataShouldHaveTh",
+				   */
+				    // Table layout tests. Research later
+				    /*
+				    "tableLayoutDataShouldNotHaveTh",
+				    "tableLayoutHasNoCaption",
+				    "tableLayoutHasNoSummary",
+				    "tableLayoutMakesSenseLinearized",
+				    "tableNotUsedForLayout",
+				    "tableShouldUseHeaderIDs",
+					
+			
+				    "tableUsesCaption",
+				    "tableSummaryDoesNotDuplicateCaption",
+				    "tableComplexHasSummary",
+				    "tableUsesScopeForRow",
+				    "tableWithBothHeadersUseScope",
+				    "tableSummaryIsEmpty",
+				    "tabularDataIsInTable",
+				    */
+				    /*
+				    "tableAxisHasCorrespondingId",
+				    "tabIndexFollowsLogicalOrder",
+				    "tableCaptionIdentifiesTable",
+				    "tableComplexHasSummary",
+				    "tableDataShouldHaveTh",
+				    "tableLayoutDataShouldNotHaveTh",
+				    "tableLayoutHasNoCaption",
+				    "tableLayoutHasNoSummary",
+				    "tableLayoutMakesSenseLinearized",
+				    "tableNotUsedForLayout",
+				    "tableShouldUseHeaderIDs",
+				    "tableUsesCaption",
+				    */
+				    "tableUsesScopeForRow",
+				    "tableWithBothHeadersUseScope",
+				    "tableShouldUseHeaderIDs"
+		        ]
+		      },
+		      contentsCss: [
+		        'http://cdn.ckeditor.com/4.16.1/full-all/contents.css',
+		        'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/accessibilitychecker/contents.css'
+		      ],
+			  on: {
+			        instanceReady: function() {
+			            var editor = this,
+			                a11ychecker = editor._.a11ychecker;
+			            if ( a11ychecker.exec ) {
+			                a11yCheckerReady( editor )
+			            } else {
+			                a11ychecker.once( 'loaded', function() {
+			                    a11yCheckerReady( editor );
+			            });
+			        }
+
+		            function a11yCheckerReady( editor ) {
+		                var a11ychecker = editor._.a11ychecker,
+		                    a11ycheckerStatic = CKEDITOR.plugins.a11ychecker;
+
+		                // Bind Quick Fix.
+		                a11ychecker.engine.fixesMapping.tableWithBothHeadersUseScope = [ 'TableScope'];
+		                a11ychecker.engine.fixesMapping.tableSummaryDoesNotDuplicateCaption = [ 'ChangeTableSummary'];
+		                a11ychecker.engine.fixesMapping.tableComplexHasSummary = [ 'AddTableSummary' ];
+		                a11ychecker.engine.fixesMapping.tableCaptionIdentifiesTable = ['CheckTableCaption' ];
+		                a11ychecker.engine.fixesMapping.tableLayoutHasNoCaption = ['RemoveTableCaption'];
+            };
+        }
+    }	         
+})
+		 
+
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Testing list markup</title>
+        <script src="../ckeditor.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script src="../scripts/require.js"></script>
+        <link rel="stylesheet" href="../styles.css"/> 
+    </head>
+    <body>
+    	<textarea id="editor1" name="editor1" > 
+    		<p>1) <strong>Intuitive user interface</strong> optimized for quick problem solving.<br />
+			2) Flexibility allowing you to use the <strong>accessibility checking engine</strong> of your choice.<br />
+			3) <strong>Quick Fix</strong> feature letting you fix common problems fully automatically.</p>
+    	</textarea>
+
+        <script>
+		    // Performance optimization:
+		    // Send a request for tests JSON file ASAP, so it's likely to be ready when the user runs Acessibility Checker.
+		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
+
+		    CKEDITOR.replace('editor1', {
+		    
+		      extraPlugins: 'a11ychecker',
+		      removePlugins: 'scayt,wsc',
+		      height: 500,
+		      a11ychecker_quailParams: {
+		        jsonPath: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail',
+		        // Override Accessibility Checker guidelines from the default configuration.
+		        guideline: [
+		          'documentVisualListsAreMarkedUp'
+		        ]
+		      },
+		      contentsCss: [
+		        'http://cdn.ckeditor.com/4.16.1/full-all/contents.css',
+		        'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/accessibilitychecker/contents.css'
+		      ],
+			on: {
+			        instanceReady: function() {
+			            var editor = this,
+			                a11ychecker = editor._.a11ychecker;
+
+			            // Depending on whether it is a dev version or not, AC might not be available yet (#246).
+			            if ( a11ychecker.exec ) {
+			                a11yCheckerReady( editor )
+			            } else {
+			                a11ychecker.once( 'loaded', function() {
+			                    a11yCheckerReady( editor );
+			                } );
+			            }
+
+			            function a11yCheckerReady( editor ) {
+			                var a11ychecker = editor._.a11ychecker,
+			                    a11ycheckerStatic = CKEDITOR.plugins.a11ychecker;
+
+			                // Bind Quick Fix.
+			                a11ychecker.engine.fixesMapping.documentVisualListsAreMarkedUp = [ 'FixListMarkup' ];
+			            };
+			        }
+			    }
+		    })
+        </script>
+    </body>
+</html>
+
