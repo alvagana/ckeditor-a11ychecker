@@ -9,34 +9,28 @@
         <link rel="stylesheet" href="../styles.css"/> 
     </head>
     <body>
-    	<textarea id="editor1" name="editor1" > 
-            <label for="testing">Testing</label>
-    		<input type="text" name="testing" id="testing">
+        <!-- HTML Content -->
+    	<textarea id="editor1" name="editor1" >
+            <form>
+                <input type="text" name="testing" id="testing">
+                <br/>
+                <input type="checkbox" id="check" name="check" value="Check">
+            </form>
     	</textarea>
-        <script>
-		    // Performance optimization:
-		    // Send a request for tests JSON file ASAP, so it's likely to be ready when the user runs Acessibility Checker.
-		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
 
+
+        <script>
+		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
 		    CKEDITOR.replace('editor1', {
-		    
 		      extraPlugins: 'a11ychecker',
 		      removePlugins: 'scayt,wsc',
 		      height: 500,
               allowedContent: true,
 		      a11ychecker_quailParams: {
 		        jsonPath: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail',
-		        // Override Accessibility Checker guidelines from the default configuration.
 		        guideline: [
-				  // Color contrast tests
-		          //"cssDocumentMakesSenseStyleTurnedOff",
 		          "inputTextHasLabel",
-		          //"colorElementBehindContrast",
-		          //"colorBackgroundImageContrast",
-		          //"colorElementBehindBackgroundImageContrast",
-		          //"colorBackgroundGradientContrast",
-		          //"colorElementBehindBackgroundGradientContrast",
-		          //'documentVisualListsAreMarkedUp',
+                  "checkboxHasLabel"
 		        ]
 		      },
 		      contentsCss: [
@@ -63,7 +57,8 @@
                                     a11ycheckerStatic = CKEDITOR.plugins.a11ychecker;
 
                                 // Bind Quick Fix.
-                                a11ychecker.engine.fixesMapping.inputTextHasMapping = [ 'inputTextHasMapping' ];
+                                a11ychecker.engine.fixesMapping.inputTextHasLabel = [ 'InputTextHasLabel' ];
+                                a11ychecker.engine.fixesMapping.checkboxHasLabel = [ 'InputTextHasLabel' ];
                             };
                         }
                     }
