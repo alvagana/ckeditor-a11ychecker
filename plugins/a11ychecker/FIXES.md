@@ -17,3 +17,4 @@ headerH3 <br/>
 headerH4 <br/>
  
 # IN DEVELOPMENT
+inputTextHasLabel (Alvin)
