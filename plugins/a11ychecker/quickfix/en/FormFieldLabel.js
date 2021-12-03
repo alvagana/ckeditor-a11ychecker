@@ -4,7 +4,6 @@
  */
 
 /*
-
 */
 ( function() {
 	'use strict';
@@ -31,7 +30,6 @@
 			TextLabelFix.prototype.constructor = TextLabelFix;
 
 			TextLabelFix.prototype.display = function( form ) {
-				console.log(this.issue);
 				form.setInputs( {
 					label: {
 						type: 'text',
@@ -77,8 +75,7 @@
 
 			TextLabelFix.prototype.lang = {"textLabel":"Label","errorEmpty":"Label title can not be empty"};
 			// Add to our quick fixes
-			CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/InputTextHasLabel', TextLabelFix);
-            CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/checkboxHasLabel', TextLabelFix);
+			CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/FormFieldLabel', TextLabelFix);
 		}
 	} );
 }() );
