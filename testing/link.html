@@ -10,24 +10,19 @@
     </head>
     <body>
     	<textarea id="editor1" name="editor1" > 
-    		<a href="google.com">Click here</a>
-    		<br/>
-    		<a href="google.com">more</a>
-    		<br/>
-    		<a style="border: 2px solid black;"href="google.com">Click</a>
-    		<br/>
+    		<a href="google.com">Click here</a><br/>
+
+    		<a href="google.com">more</a><br/>
+    		
+    		<a style="border: 2px solid black;"href="google.com">Click</a><br/>
+    		
     		<a title="Read more about failed elephant evacuation" href="http://example.com/WORLD/africa/kenya.elephants.ap/index.html" >
 			   Evacuation Crumbles Under Jumbo load
-			</a>
+			</a><br/>
+
+			<a href="google.com" aria-label="christmas lights"><img aria-hidden="true" src="./example.jpg"/></a>
     	</textarea>
         <script>
-        	/*
-        	function alertUser(param) {
-        		if (!confirm("You will now be redirected to ", param.getAttribute("href"))) {
-        			event.preventDefault();
-        		}
-        	}
-        	*/
 		    // Performance optimization:
 		    // Send a request for tests JSON file ASAP, so it's likely to be ready when the user runs Acessibility Checker.
 		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
@@ -41,15 +36,11 @@
 		        jsonPath: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail',
 		        // Override Accessibility Checker guidelines from the default configuration.
 		        guideline: [
-		        	"aMustHaveTitle",
-		        	"aSuspiciousLinkText", // Write quick fix
+		        	//"aMustHaveTitle",
+		        	//"aSuspiciousLinkText",
 		        	"aMustContainText",
-		        	//"aLinkTextDoesNotBeginWithRedundantWord",
-    				//"aLinksDontOpenNewWindow",
-    				"headerTextIsTooLong", // Write quick fix
-    				"documentTitleNotEmpty"
-    				//"imgAltIsTooLong",
-    				//"imgAltTextNotRedundant"
+    				//"headerTextIsTooLong",
+    				//"documentTitleNotEmpty"
 
 		        ]
 		      },

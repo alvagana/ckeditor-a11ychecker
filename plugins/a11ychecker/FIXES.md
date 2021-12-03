@@ -26,8 +26,7 @@
  
 # IN DEVELOPMENT
     Labels (Alvin),
-    Color Contrast (Alvin),
-    Alt Images (Alvin)
+    aMustContainText (Alvin)
 
 # LIST
     "aAdjacentWithSameResourceShouldBeCombined",

@@ -6,12 +6,12 @@
         <script src="../ckeditor.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
         <script src="../scripts/require.js"></script>
-        <link rel="stylesheet" href="../styles.css"/> 
+        <link rel="stylesheet" href="./styles.css"/> 
     </head>
     <body>
         <!-- HTML Content -->
     	<textarea id="editor1" name="editor1" >
-            <form style="display: flex; flex-direction: column; width: 300px; height: 300px; justify-content: space-evenly;">
+            <form>
                 <fieldset>
                     <input type="text" name="testing" id="testing">
                     <div>
@@ -26,8 +26,11 @@
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                     </select>
+                    <br/>
                     <input type="password" id="password">
+                    <br/>
                     <input type="file" id="file">
+                    <br/>
                     <textarea id="textarea" name="textarea"></textarea>
                 </fieldset>
             </form>
@@ -57,7 +60,7 @@
 		      contentsCss: [
 		        'http://cdn.ckeditor.com/4.16.1/full-all/contents.css',
 		        'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/accessibilitychecker/contents.css',
-                '../styles.css'
+                './styles.css'
 		      ],
                 on: {
                         instanceReady: function() {
