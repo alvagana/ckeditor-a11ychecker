@@ -21,8 +21,8 @@ inputTextHasLabel (Alvin)
 checkboxHasLabel (Alvin)
 
 # LIST
-    "aAdjacentWithSameResourceShouldBeCombined",<br/>
-    "aImgAltNotRepetitive",<br/>
+    "aAdjacentWithSameResourceShouldBeCombined",
+    "aImgAltNotRepetitive",
     "aLinkTextDoesNotBeginWithRedundantWord",<br/>
     "aLinksDontOpenNewWindow",<br/>
     "aLinksToMultiMediaRequireTranscript",<br/>
