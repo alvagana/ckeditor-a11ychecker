@@ -62,18 +62,9 @@
 				} else if (formAttributes.type === 'Caption') {
 					element.setAttribute( 'alt', " " );
 
-					//var figcaption = document.createElement('figcaption');
-					//figcaption.textContent = formAttributes.alt;
-					
-					//this.issue.originalElement.$.parentNode.append(figcaption);
-					
-					//var e = document.querySelectorAll("[style='display: none;']");
-					var document = new CKEDITOR.dom.document(document);
-					console.log(document);
-					//e[0].children[0].appendChild(figcaption);
-					//console.log(e[0].children[0]);
-
-
+					var figcaption = new CKEDITOR.dom.element( 'figcaption' );
+					figcaption.appendText(formAttributes.alt);
+					element.insertBeforeMe(figcaption)
 				} else {
 					element.setAttribute( 'alt', formAttributes.alt );
 				}
