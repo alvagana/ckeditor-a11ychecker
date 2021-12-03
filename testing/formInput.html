@@ -12,22 +12,24 @@
         <!-- HTML Content -->
     	<textarea id="editor1" name="editor1" >
             <form style="display: flex; flex-direction: column; width: 300px; height: 300px; justify-content: space-evenly;">
-                <input type="text" name="testing" id="testing">
-                <div>
-                    <input type="checkbox" id="check" name="check" value="Check">
-                </div>
-                <div>
-                    <input type="radio" id="radio" name="radio" value="hello">
-                </div>
-                <select name="cars" id="cars">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-                <input type="password" id="password">
-                <input type="file" id="file">
-                <textarea id="textarea" name="textarea"></textarea>
+                <fieldset>
+                    <input type="text" name="testing" id="testing">
+                    <div>
+                        <input type="checkbox" id="check" name="check" value="Check">
+                    </div>
+                    <div>
+                        <input type="radio" id="radio" name="radio" value="hello">
+                    </div>
+                    <select name="cars" id="cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <input type="password" id="password">
+                    <input type="file" id="file">
+                    <textarea id="textarea" name="textarea"></textarea>
+                </fieldset>
             </form>
     	</textarea>
 
@@ -48,7 +50,8 @@
                   "textareaHasAssociatedLabel",
                   "selectHasAssociatedLabel",
                   "passwordHasLabel",
-                  "fileHasLabel"
+                  "fileHasLabel",
+                  "fieldsetHasLabel"
 		        ]
 		      },
 		      contentsCss: [
@@ -82,6 +85,7 @@
                                 a11ychecker.engine.fixesMapping.selectHasAssociatedLabel = [ 'FormFieldLabel' ];
                                 a11ychecker.engine.fixesMapping.passwordHasLabel = [ 'FormFieldLabel' ];
                                 a11ychecker.engine.fixesMapping.fileHasLabel = [ 'FormFieldLabel' ];
+                                a11ychecker.engine.fixesMapping.fieldsetHasLabel = [ 'FieldsetLegend' ];
                             };
                         }
                     }

@@ -21,10 +21,13 @@
     "textareaHasAssociatedLabel",
     "selectHasAssociatedLabel",
     "passwordHasLabel",
-    "fileHasLabel"
+    "fileHasLabel",
+    "fieldsetHasLabel"
  
 # IN DEVELOPMENT
-
+    Labels (Alvin),
+    Color Contrast (Alvin),
+    Alt Images (Alvin)
 
 # LIST
     "aAdjacentWithSameResourceShouldBeCombined",
