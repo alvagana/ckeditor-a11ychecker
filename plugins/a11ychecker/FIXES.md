@@ -18,3 +18,4 @@ headerH4 <br/>
  
 # IN DEVELOPMENT
 inputTextHasLabel (Alvin)
+checkboxHasLabel (Alvin)
