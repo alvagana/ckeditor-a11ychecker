@@ -25,6 +25,8 @@
                     <option value="audi">Audi</option>
                 </select>
                 <br/>
+                <input type="password" id="password">
+                <br/>
                 <textarea id="textarea" name="textarea"></textarea>
                 <br/>
             </form>
@@ -45,7 +47,8 @@
                   "checkboxHasLabel",
                   "radioHasLabel",
                   "textareaHasAssociatedLabel",
-                  "selectHasAssociatedLabel"
+                  "selectHasAssociatedLabel",
+                  "passwordHasLabel"
 		        ]
 		      },
 		      contentsCss: [
@@ -77,7 +80,7 @@
                                 a11ychecker.engine.fixesMapping.radioHasLabel = [ 'FormFieldLabel' ];
                                 a11ychecker.engine.fixesMapping.textareaHasAssociatedLabel = [ 'FormFieldLabel' ];
                                 a11ychecker.engine.fixesMapping.selectHasAssociatedLabel = [ 'FormFieldLabel' ];
-                                
+                                a11ychecker.engine.fixesMapping.passwordHasLabel = [ 'FormFieldLabel' ];
                             };
                         }
                     }
