@@ -20,7 +20,8 @@
     "radioHasLabel",
     "textareaHasAssociatedLabel",
     "selectHasAssociatedLabel",
-    "passwordHasLabel"
+    "passwordHasLabel",
+    "fileHasLabel"
  
 # IN DEVELOPMENT
 
