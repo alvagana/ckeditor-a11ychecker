@@ -22,11 +22,11 @@
     "selectHasAssociatedLabel",
     "passwordHasLabel",
     "fileHasLabel",
-    "fieldsetHasLabel"
+    "fieldsetHasLabel",
+    "aMustContainText"
  
 # IN DEVELOPMENT
-    Labels (Alvin),
-    aMustContainText (Alvin)
+    Labels (Alvin)
 
 # LIST
     "aAdjacentWithSameResourceShouldBeCombined",
