@@ -1,4 +1,5 @@
-// Quick fix
+// To use this template, copy this file and paste it in plugins/a11ychecker/quickfix/en and rename it
+// to the name of your quick fix.
 
 ( function() {
 	'use strict';
@@ -54,6 +55,8 @@
 
 			// This is used if user needs to type something in. It will check if they typed something empty.
 			// If you are not typing anything in, you can remove this/comment out.
+			// Change "proposedSummary" to a name that represents your text input.
+			// formAttributes.summary should be renamed to the object in form.setInputs.
 			QUICK_FIX_NAME.prototype.validate = function( formAttributes ) {
 				var proposedSummary = formAttributes.summary,
 					ret = [];
