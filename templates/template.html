@@ -2,58 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Testing quick fixes</title>
+        <title>Title whatever you'd like :)</title>
         <script src="../ckeditor.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
         <script src="../scripts/require.js"></script>
-        <link rel="stylesheet" href="../styles.css"/> 
     </head>
+
     <body>
     	<textarea id="editor1" name="editor1" > 
-    		<table summary="This is a table.">
-				<caption>This is a table.</caption>
-				<tr>
-				<th>Name</th>
-				<th>Age</th>
-				<th>Birthday</th>
-				</tr>
-
-				<tr>
-				<th>Jackie</th>
-				<td>5</td>
-				<td>April 5</td>
-				</tr>
-
-				<tr>
-				<th>Beth</th>
-				<td>8</td>
-				<td>January 14</td>
-				</tr>
-
-				<tr>
-				<th>Jason</th>
-				<td>9</td>
-				<td>February 14</td>
-				</tr>
-
-				<tr>
-				<th>Nicole</th>
-				<td>6</td>
-				<td>July 3</td>
-				</tr>
-
-				<tr>
-				<th>Mark</th>
-				<td>7</td>
-				<td>December 16</td>
-				</tr>
-
-			</table>
+    		<!-- 
+                Content goes here!
+                Whatever issue you are trying to recreate, put the HTML Code here.
+            -->
     	</textarea>
 
         <script>
 		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
-
 		    CKEDITOR.replace('editor1', {
 		      extraPlugins: 'a11ychecker',
 		      removePlugins: 'scayt,wsc',
@@ -61,10 +25,15 @@
 		      allowedContent: true,
 		      a11ychecker_quailParams: {
 		        jsonPath: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail',
-		        // Override Accessibility Checker guidelines from the default configuration.
+
+                // Guidelines are the tests that you will be running when you click on the icon.
+                // Put the lists of tests here separated by commas.
+                // Check out tests.json in the folder to look at the different tests, and tests-desc.json for an idea of what they look for.
 		        guideline: [
-				"tableSummaryDoesNotDuplicateCaption",
+				    "",
 		        ]
+
+
 		      },
 		      contentsCss: [
 		        'http://cdn.ckeditor.com/4.16.1/full-all/contents.css',
@@ -72,28 +41,29 @@
 		        '../styles.css'
 		      ],
 
-		      // This is added if we want to have new quick fixes/issus that we implemented.
-				on: {
-		        instanceReady: function() {
-		            var editor = this,
-		                a11ychecker = editor._.a11ychecker;
-		            if ( a11ychecker.exec ) {
-		                a11yCheckerReady( editor )
-		            } else {
-		                a11ychecker.once( 'loaded', function() {
-		                    a11yCheckerReady( editor );
-		                } );
-		            }
+            on: {
+            instanceReady: function() {
+                var editor = this,
+                    a11ychecker = editor._.a11ychecker;
+                if ( a11ychecker.exec ) {
+                    a11yCheckerReady( editor )
+                } else {
+                    a11ychecker.once( 'loaded', function() {
+                        a11yCheckerReady( editor );
+                    } );
+                }
 
-		            function a11yCheckerReady( editor ) {
-		                var a11ychecker = editor._.a11ychecker,
-		                    a11ycheckerStatic = CKEDITOR.plugins.a11ychecker;
+                function a11yCheckerReady( editor ) {
+                    var a11ychecker = editor._.a11ychecker,
+                        a11ycheckerStatic = CKEDITOR.plugins.a11ychecker;
 
-		                // Binded Quick Fixes
-		                a11ychecker.engine.fixesMapping.tableSummaryDoesNotDuplicateCaption = ['ChangeTableSummary'];
-		            };
-		        }
-    		}
+                    // At the end, bind your quick fixes here in the format of 
+                    // a11ychecker.engine.fixesMapping.TEST-NAME = ['QUICK-FIX-NAME'];
+                    // Example: a11ychecker.engine.fixesMapping.tableSummaryDoesNotDuplicateCaption = ['ChangeTableSummary'];
+                    a11ychecker.engine.fixesMapping.testname = ['quick-fix-name'];
+                };
+            }
+        }
 		})
         </script>
     </body>
