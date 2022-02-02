@@ -1,11 +1,5 @@
-/**
- * @license Copyright (c) 2014-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/license
- */
+// Quick fix
 
-/*
-
-*/
 ( function() {
 	'use strict';
 
@@ -16,22 +10,22 @@
 			var emptyWhitespaceRegExp = /^[\s\n\r]+$/g;
 			
 			/**
-			 * QuickFix adding summary to tables
+			 * {DESC of quick fix here}
 			 *
 			 * @member CKEDITOR.plugins.a11ychecker.quickFix
-			 * @class AddTableSummary
+			 * @class {Name of quick fix here}
 			 * @constructor
 			 * @param {CKEDITOR.plugins.a11ychecker.Issue} issue Issue QuickFix is created for.
 			 */
-			function ChangeTableSummary( issue ) {
+			function QUICK_FIX_NAME( issue ) {
 				QuickFix.call( this, issue );
 			}
 
-			ChangeTableSummary.prototype = new QuickFix();
+			QUICK_FIX_NAME.prototype = new QuickFix();
 
-			ChangeTableSummary.prototype.constructor = ChangeTableSummary;
+			QUICK_FIX_NAME.prototype.constructor = QUICK_FIX_NAME;
 
-			ChangeTableSummary.prototype.display = function( form ) {
+			QUICK_FIX_NAME.prototype.display = function( form ) {
 				form.setInputs( {
 					summary: {
 						type: 'text',
@@ -46,18 +40,21 @@
 			 * @param {Function} callback Function to be called when a fix was applied. Gets QuickFix object
 			 * as a first parameter.
 			 */
-			ChangeTableSummary.prototype.fix = function( formAttributes, callback ) {
-				var issueElement = this.issue.element;
-				console.log(issueElement);
-				issueElement.setAttribute('summary', formAttributes.summary);
+			 QUICK_FIX_NAME.prototype.fix = function( formAttributes, callback ) {
+				
+				
 
-				// Callback
+
+
+
 				if ( callback ) {
 					callback( this );
 				}
 			};
 
-			ChangeTableSummary.prototype.validate = function( formAttributes ) {
+			// This is used if user needs to type something in. It will check if they typed something empty.
+			// If you are not typing anything in, you can remove this/comment out.
+			QUICK_FIX_NAME.prototype.validate = function( formAttributes ) {
 				var proposedSummary = formAttributes.summary,
 					ret = [];
 
@@ -69,9 +66,9 @@
 				return ret;
 			};
 
-			ChangeTableSummary.prototype.lang = {"summaryLabel":"Summary","errorEmpty":"Summary text can not be empty"};
+			QUICK_FIX_NAME.prototype.lang = {"summaryLabel":"Summary","errorEmpty":"Summary text can not be empty"};
 			// Add to our quick fixes
-			CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/ChangeTableSummary', ChangeTableSummary);
+			CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/QUICK_FIX_NAME', QUICK_FIX_NAME);
 		}
 	} );
 }() );

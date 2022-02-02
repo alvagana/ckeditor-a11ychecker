@@ -16,7 +16,7 @@
 			var emptyWhitespaceRegExp = /^[\s\n\r]+$/g;
 			
 			/**
-			 * QuickFix adding summary to tables
+			 * {QuickFix adding summary to tables}
 			 *
 			 * @member CKEDITOR.plugins.a11ychecker.quickFix
 			 * @class AddTableSummary
