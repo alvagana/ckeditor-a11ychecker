@@ -144,6 +144,7 @@
     "tableLayoutMakesSenseLinearized",
     "tableNotUsedForLayout",
     "tableShouldUseHeaderIDs",
+    "tableSummaryDoesNotDuplicateCaption",
     "tableUsesCaption",
     "tableUsesScopeForRow",
     "tableWithBothHeadersUseScope",
