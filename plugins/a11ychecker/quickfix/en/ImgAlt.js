@@ -62,9 +62,14 @@
 				} else if (formAttributes.type === 'Caption') {
 					element.setAttribute( 'alt', " " );
 
+					if ( element.getParent().getName != "figure") {
+						var figure = new CKEDITOR.dom.element( 'figure' );
+						element.getParent().append(figure);
+					}
 					var figcaption = new CKEDITOR.dom.element( 'figcaption' );
 					figcaption.appendText(formAttributes.alt);
-					element.insertBeforeMe(figcaption)
+					figcaption.insertAfter(element);
+					console.log("Parent is ", element.getParent().getName());
 				} else {
 					element.setAttribute( 'alt', formAttributes.alt );
 				}

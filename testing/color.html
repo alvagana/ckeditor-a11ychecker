@@ -6,14 +6,24 @@
         <script src="../ckeditor.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
         <script src="../scripts/require.js"></script>
-        <link rel="stylesheet" href="../styles.css"/> 
+        <!-- <link rel="stylesheet" href="../styles.css"/> -->
     </head>
+    <style>
+        .test {
+            color: white;
+            background-color: yellow;
+        }
+    </style>
     <body>
     	<textarea id="editor1" name="editor1" > 
+            <h1 class="test">Text is white, background is yellow</h1>
+
+
+            <!--
     		<h1>Text is white, background is yellow</h1>
             <p class="c">Good day sir!</p>
             <p><span style="color:#f1c40f;"><span style="background-color:#f39c12;">asdasdasdad</span></span></p>
-
+            -->
     	</textarea>
         <script>
 		    // Performance optimization:
@@ -65,7 +75,7 @@
                                     a11ycheckerStatic = CKEDITOR.plugins.a11ychecker;
 
                                 // Bind Quick Fix.
-                                a11ychecker.engine.fixesMapping.colorFontContrast = [ 'ColorChangeTest' ];
+                                a11ychecker.engine.fixesMapping.colorFontContrast = [ 'ColorChange' ];
                             };
                         }
                     }
