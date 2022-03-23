@@ -57,19 +57,34 @@
 
 			ImgAlt.prototype.fix = function( formAttributes, callback ) {
 				var element = this.issue.element
+				console.log(element)
+				
+				// If selected decorative,
+				// we ignore the form and just set the alt image to blank
 				if (formAttributes.type === 'Decorative') {
 					element.setAttribute( 'alt', " " );
+				
+				// Else if selected caption,
+				// check if img is under a figure parent first
+				// then set caption
 				} else if (formAttributes.type === 'Caption') {
 					element.setAttribute( 'alt', " " );
+					var parent = element.getParent()
 
-					if ( element.getParent().getName != "figure") {
+					var figcaption = new CKEDITOR.dom.element( 'figcaption' )
+					figcaption.appendText(formAttributes.alt)
+
+					if ( parent.getName() != "figure") {
 						var figure = new CKEDITOR.dom.element( 'figure' );
-						element.getParent().append(figure);
+						var elementCopy = element.clone()
+						figure.append(elementCopy)
+						figure.append(figcaption)
+
+						element.insertBeforeMe(figure);
+						element.remove()
+					} else {
+						parent.append(figcaption)
 					}
-					var figcaption = new CKEDITOR.dom.element( 'figcaption' );
-					figcaption.appendText(formAttributes.alt);
-					figcaption.insertAfter(element);
-					console.log("Parent is ", element.getParent().getName());
 				} else {
 					element.setAttribute( 'alt', formAttributes.alt );
 				}
