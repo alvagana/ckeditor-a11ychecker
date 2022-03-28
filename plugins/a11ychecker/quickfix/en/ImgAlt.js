@@ -38,7 +38,7 @@
 				var dict = {
 					'Non-decorative': 'Non-decorative',
 					'Decorative': 'Decorative (select if image is already discussed on page)',
-					'Caption': 'Change alt text to caption (IN DEVELOPMENT)'
+					'Caption': 'Change alt text to caption'
 				}
 				form.setInputs( {
 					type: {

@@ -1,53 +1,55 @@
+// todo
+// need to style the elements hwow mindtouch styles it
+// class: mt-color-######
 
 ( function() {
 	CKEDITOR.plugins.a11ychecker.quickFixes.get( { langCode: 'en',
 		name: 'QuickFix',
 		callback: function( QuickFix ) {
 			// Variables, elements to use throughout
-			var element, color, bgColor, parentStyling,
-				textLabel = new CKEDITOR.dom.element("label"),
-				backgroundLabel = new CKEDITOR.dom.element("label"),
-				colorPickerContainer = new CKEDITOR.dom.element("div"),
-				colorPickerText = new CKEDITOR.dom.element("input"),
-				colorPickerBackground = new CKEDITOR.dom.element("input"),
+			var element, color, bgColor, parentStyling, currentTextClass, currentBGClass, textValue, bgValue,
+				textLabel = document.createElement("label"),
+				backgroundLabel = document.createElement("label"),
+				colorPickerContainer = document.createElement("div"),
+				colorPickerText = document.createElement("input"),
+				colorPickerBackground = document.createElement("input"),
 				balloon = document.querySelector(".cke_balloon"),
 				buttons = document.querySelectorAll(".cke_a11yc_ui_button"),
-				lineBreak = new CKEDITOR.dom.element("br");
+				ratioElem = document.createElement("div"),
+				lineBreak = document.createElement("br");
 			
-				colorPickerText.setAttributes({
-					"type": "color",
-					"value": "#BABABA"
+			colorPickerText.setAttribute("type", "color");
+			colorPickerText.setAttribute("value", "#FFFFFF");
+			colorPickerBackground.setAttribute("type", "color");
+			colorPickerBackground.setAttribute("value", "#FFFFFF");
+			colorPickerContainer.setAttribute("id", "colorPickerContainer");
+
+			// https://www.delftstack.com/howto/javascript/rgb-to-hex-javascript/
+			function ColorToHex(color) {
+				var hexadecimal = color.toString(16);
+				return hexadecimal.length == 1 ? "0" + hexadecimal : hexadecimal;
+			}
+			  
+			function ConvertRGBtoHex(red, green, blue) {
+				return ColorToHex(red) + ColorToHex(green) + ColorToHex(blue);
+			}
+
+			// mt-bgcolor-ecf0f1 mt-color-ecf0f1
+			function parseColors(cl) {
+				let ret = ["",""];
+				let classes = cl.split(" ");
+				classes.forEach((c) => {
+					let name = c.split("-");
+					if (name.length == 3 && name[1] == "color") {
+						ret[0] = name[2];
+					} else if (name.length == 3 && name[1] == "bgcolor") {
+						ret[1] = name[2]
+					}
 				});
-				colorPickerBackground.setAttributes({
-					"type": "color",
-					"value": "#BABABA"
-				})
-				colorPickerContainer.setAttribute("id", "colorPickerContainer");
+				return ret;
+			}
+			
 
-				let colorPickerStyleAttributes = ["width", "height", "border", "border-radius", "padding", "cursor", "position", "left", "margin"];
-				let colorPickerStyleValues = ["60px", "30px", "1px solid #333333", "5px", "1px", "pointer", "relative", "12px", "5px 5px"]
-				let labelAttributes = ["font-weight", "position", "left", "bottom"];
-				let labelValues = ["bold", "relative", "15px", "5px"];
-				for (let i = 0; i < colorPickerStyleAttributes.length; i++) {
-					colorPickerText.setStyle(colorPickerStyleAttributes[i], colorPickerStyleValues[i]);
-					colorPickerBackground.setStyle(colorPickerStyleAttributes[i], colorPickerStyleValues[i]);
-				}
-
-				for (let i = 0; i < labelValues.length; i++) {
-					textLabel.setStyle(labelAttributes[i], labelValues[i]);
-					backgroundLabel.setStyle(labelAttributes[i], labelValues[i]);
-				}
-
-				textLabel.appendText("Text color");
-				backgroundLabel.appendText("Background color");
-
-				colorPickerContainer.append(colorPickerText);
-				colorPickerContainer.append(textLabel);
-				colorPickerContainer.append(lineBreak);
-				colorPickerContainer.append(colorPickerBackground);
-				colorPickerContainer.append(backgroundLabel);
-
-		
 			/**
 			 * QuickFix for changing color contrast of text elements.
 			 *
@@ -56,145 +58,94 @@
 			 * @constructor
 			 * @param {CKEDITOR.plugins.a11ychecker.Issue} issue Issue QuickFix is created for.
 			 */
-			function ColorChangeTest( issue ) {
+			function ColorChange( issue ) {
 				QuickFix.call( this, issue );
+
 			}
 
-			function getColors( element ) {
-			
-				// The focused elements data quail id
-				var elementDataQuailId = element.$.getAttribute('data-quail-id');
+			ColorChange.prototype = new QuickFix();
 
-				// Check if there's inline styling.
-				let s = element.$.getAttribute("style");
-				if (s) {
-					// Parse the style attribute's value
-					let properties = s.split(';');
-					let definedStyleList = [], definedStyleValueList = [];
-					properties.pop();
-					
-					// Get the inline styling
-					for (let i = 0; i < properties.length; i++) {
-						let definedStyle = properties[i].split(':'), 
-							val = definedStyle[1].trimStart();
+			ColorChange.prototype.constructor = ColorChange;	
 
-						if (val.startsWith("rgb")) {
-							let temp = new CKEDITOR.tools.color(val);
-							val = temp.getHex();
-						}
-						definedStyleList.push(definedStyle[0].trimStart());
-						definedStyleValueList.push(val);
+			ColorChange.prototype.display = function( form ) {
+					element = this.issue.element;
+					console.log( element.getComputedStyle( 'color' ));
+					console.log( element.getComputedStyle( 'background-color' ));
+
+					let computedTextColor = element.getComputedStyle( 'color');
+					let computedBGColor = element.getComputedStyle( 'background-color' );
+
+					if ( computedTextColor != "") {
+						let t = computedTextColor.split('(');
+						let t2 = t[1].split(')');
+						let t3 = t2[0].split(',');
+						colorPickerText.value = ConvertRGBtoHex(t3[0].trimStart(), t3[1].trimStart(), t3[2].trimStart());
 					}
-					
-					let colorIndex = -1, bgColorIndex = -1;
-					definedStyleList.forEach((e, index) => {
-						if (e == 'color') {
-							colorIndex = index;
-							colorPickerText.setAttribute("value", definedStyleValueList[index]);
-						} else if (e == 'background-color') {
-							bgColorIndex = index;
-							colorPickerBackground.setAttribute("value", definedStyleValueList[index]);
-						}
-					})
 
-					if (colorIndex == -1 || bgColorIndex == -1) {
-						let p = element.$.parentNode.getAttribute("style")
-
-						if (p) {
-							let properties = p.split(";");
-							properties.pop();
-							definedStyleList = [];
-							definedStyleValueList = [];
-							for (let i = 0; i < properties.length; i++) {
-								let definedStyle = properties[i].split(':'),
-									val = definedStyle[1].trimStart();
-
-								if (val.startsWith("rgb")) {
-									let temp = new CKEDITOR.tools.color(val);
-									val = temp.getHex();
-								}
-								definedStyleList.push(definedStyle[0].trimStart())
-								definedStyleValueList.push(val)
-							}
-
-							definedStyleList.forEach((e, index) => {
-								if (e == 'color' && colorIndex == -1) {
-									colorPickerText.setAttribute("value", definedStyleValueList[index]);
-									parentStyling = 'color'
-								}
-
-								if (e == 'background-color' && bgColorIndex == -1) {
-									colorPickerBackground.setAttribute("value", definedStyleValueList[index]);
-									parentStyling = 'background-color';
-								}
-							})
-
-						}
+					if ( computedBGColor != "") {
+						let t = computedBGColor.split('(');
+						let t2 = t[1].split(')');
+						let t3 = t2[0].split(',');
+						colorPickerBackground.value = ConvertRGBtoHex(t3[0].trimStart(), t3[1].trimStart(), t3[2].trimStart());
 					}
-					
-				} else {
-					// Getting the CSS defined styling for the element.
+
+					textValue = "fffccc";
+					bgValue = "fe123a";
+					colorPickerText.value = "#" + textValue;
+					colorPickerBackground.value = "#" + bgValue;
 					/*
-					How it works:
-					Each focused element is recreated in a CKEditor 4 instance.
-					But, each focused element also has its actual, native element hidden in the HTML file as well.
-					You can find it using the matching data quail id to retrieve the computed CSS style
-					associating with the focused element.
+					colorPickerText.setAttribute("value", "#123456");
+						console.log(colorPickerText.value);
+						console.log(colorPickerBackground.value);
 					*/
-					var e = document.querySelectorAll("[style='display: none;']");
-					for (let i = 0; i < e.length; i++) {
-						if (e[i].getAttribute('data-quail-id') !== null) {
-							for (let j = 0; j < e[i].children.length; j++) {
-								if (e[i].children[j].getAttribute('data-quail-id') === elementDataQuailId) {
-									bgColor = new CKEDITOR.tools.color(getComputedStyle(e[i].children[j]).getPropertyValue("background-color"));
-									color = new CKEDITOR.tools.color(getComputedStyle(e[i].children[j]).getPropertyValue("color"));
-								}
-							}
-						};
+
+					// Checking to see if the balloon window has the color pickers already,
+					// so we don't append the color pickers each time the script resets.
+					if (balloon.children[3].children.length < 5) {
+						// Styling for the color pickers
+						let colorPickerStyle = "width: 60px; height: 30px; border: 1px solid #333333; border-radius: 5px; padding: 1px; cursor: pointer; position: relative; left: 12px; margin: 10px 5px;";
+						colorPickerText.style = colorPickerStyle;
+						colorPickerBackground.style = colorPickerStyle;
+						
+						// Styling for text label
+						let labelStyle = "font-weight: bold; position: relative; left: 15px; bottom: 5px;"
+						textLabel.textContent = "Text color";
+						textLabel.style = labelStyle;
+						backgroundLabel.textContent = "Background color";
+						backgroundLabel.style = labelStyle;
+
+						// Putting all our elements into one div and then appending it to the balloon window
+						colorPickerContainer.appendChild(textLabel);
+						colorPickerContainer.appendChild(colorPickerText);
+						colorPickerContainer.appendChild(lineBreak);
+						colorPickerContainer.appendChild(backgroundLabel);
+						colorPickerContainer.appendChild(colorPickerBackground);
+						
+						balloon.children[3].insertBefore(colorPickerContainer, balloon.children[3].children[2]);
 					}
-					parentStyling = '';
-					colorPickerText.setAttribute("value", color.getHex());
-					colorPickerBackground.setAttribute("value", bgColor.getHex());
-				}
-			}
-
-			ColorChangeTest.prototype = new QuickFix();
-
-			ColorChangeTest.prototype.constructor = ColorChangeTest;
-
-			ColorChangeTest.prototype.display = function( form ) {
-				// element is the focused element of the quick fix
-				element = this.issue.element;
-				getColors( element );
-
-				form.addInput('temp', {
-					type: 'text',
-					label: 'remove'
-				})
-				form.inputs.temp.wrapper.append(colorPickerContainer);
-				form.inputs.temp.wrapper.$.children[1].remove()
-				form.inputs.temp.wrapper.$.children[0].remove()
 			};
 
-			ColorChangeTest.prototype.fix = function( formAttributes, callback ) {
-				if (parentStyling == 'background-color') {
-					element.setStyle('color', colorPickerText.getValue());
-					element.$.parentNode.style.backgroundColor = colorPickerBackground.getValue();
-				} else if (parentStyling == 'color') {
-					element.setStyle('background-color', colorPickerBackground.getValue());
-					element.$.parentNode.style.color = colorPickerText.getValue();
-				} else {
+			// When user clicks quick fix, set the colors
+			ColorChange.prototype.fix = function( formAttributes, callback ) {
+				let classes = element.getAttributes( 'class' );
+				let c = parseColors(classes.class);
 
-					element.setStyle('color', colorPickerText.getValue());
-					element.setStyle('background-color', colorPickerBackground.getValue());
+				if (c[0]) {
+					element.removeClass(`mt-color-${c[0]}`);
+					element.addClass(`mt-color-${textValue}`);
+				} 
+				if (c[1]) {
+					element.removeClass(`mt-bgcolor-${c[1]}`);
+					element.addClass(`mt-bgcolor-${bgValue}`);
 				}
-
+				
+				
 				if ( callback ) {
 					callback( this );
 				}
 			};
 
-			CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/ColorChangeTest', ColorChangeTest );
+			CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/ColorChange', ColorChange );
 		}
 	} );
 }() );

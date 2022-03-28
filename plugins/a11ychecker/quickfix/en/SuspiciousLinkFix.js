@@ -32,7 +32,7 @@
 
 			SuspiciousLinkFix.prototype.display = function( form ) {
 				form.setInputs( {
-					linkText: {
+					summary: {
 						type: 'text',
 						label: this.lang.textLabel
 					}
@@ -47,8 +47,8 @@
 			 * as a first parameter.
 			 */
 			SuspiciousLinkFix.prototype.fix = function( formAttributes, callback ) {
-				var issueElement = new CKEDITOR.dom.element(this.issue.element.$);
-				issueElement.$.textContent = formAttributes.linkText;
+				var issueElement = this.issue.element;
+				issueElement.setText(formAttributes.summary)
 
 				// Callback
 				if ( callback ) {
@@ -57,7 +57,7 @@
 			};
 
 			SuspiciousLinkFix.prototype.validate = function( formAttributes ) {
-				var proposedText = formAttributes.linkText,
+				var proposedText = formAttributes.summary,
 					ret = [];
 
 				// Test if the caption has only whitespaces.
