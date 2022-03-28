@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>alt image</title>
+        <script src="../ckeditor.js"></script>
+		<script src="./customIssue.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script src="../scripts/require.js"></script>
+        <link rel="stylesheet" href="styles.css"/> 
+    </head>
+    <body>
+    	<textarea id="editor1" cols="10" rows="10">
+			&lt;p&gt;This is a &lt;a href=&quot;http://ckeditor.com&quot;&gt;http link&lt;/a&gt; that should be changed to a &lt;a href=&quot;https://ckeditor.com&quot;&gt;https link like this.&lt;/a&gt;&lt;/p&gt;
+			<p>This <strong>is</strong> a <strong>sample</strong> <em>text</em>.</p>
+			<section class="mt-content-container">
+				<h1>mt-content-container</h1>
+			</section>
+			<section class="mt-content-container">
+				<h1>Second mt-content-container</h1>
+			</section>
+			<section>
+				<h1>NOT mt-content-container</h1>
+			</section>
+		</textarea>
+        <script>
+		    // Performance optimization:
+		    // Send a request for tests JSON file ASAP, so it's likely to be ready when the user runs Acessibility Checker.
+		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
+
+		    CKEDITOR.replace('editor1', {
+		      extraPlugins: 'a11ychecker',
+		      removePlugins: 'scayt,wsc',
+		      height: 500,
+		      allowedContent: true,
+		      a11ychecker_quailParams: {
+		        jsonPath: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail',
+		      },
+		      contentsCss: [
+		        'http://cdn.ckeditor.com/4.16.1/full-all/contents.css',
+		        'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/accessibilitychecker/contents.css'
+		      ],
+			  on: {
+				instanceReady: function() {
+					var editor = this,
+						a11ychecker = editor._.a11ychecker;
+		
+					// Depending on whether it is a dev version or not, Accessibility Checker might not be available yet (#246).
+					if ( a11ychecker.exec ) {
+						a11yCheckerReadyCustom( editor )
+					} else {
+						a11ychecker.once( 'loaded', function() {
+							a11yCheckerReadyCustom( editor );
+						} );
+					}
+		
+				}
+			}
+        })         
+		
+        </script>
+    </body>
+</html>
+
