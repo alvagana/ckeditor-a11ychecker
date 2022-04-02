@@ -83,6 +83,7 @@
 					if ( parent.getName() != "figure") {
 						var figure = new CKEDITOR.dom.element( 'figure' );
 						var elementCopy = element.clone()
+						elementCopy.addClass('alt-tag-verified');
 						figure.append(elementCopy)
 						figure.append(figcaption)
 
@@ -90,14 +91,11 @@
 						element.remove()
 					} else {
                         console.log("Parent is figure");
-                        let parentChildren = parent.getChildren()
-                        console.log(parentChildren.length)
+                        var parentChildren = parent.getChildren().toArray()
                         for (let i = 0; i < parentChildren.length; i++) {
-                            console.log(parentChildren[i].tagName)
-                            if (parentChildren[i].tagName == "figcaption") {
-                                parentChildren[i].textContent = formAttributes.alt;
-                                console.log("child: ", parentChildren[i])
-                            }
+                            if (parentChildren[i].getName() == "figcaption") {
+								parentChildren[i].setText(formAttributes.alt)
+							}
                         }
 					}
 				} else {
