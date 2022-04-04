@@ -29,7 +29,7 @@
 			 * @member CKEDITOR.plugins.a11ychecker.quickFix.AttributeRename
 			 * @static
 			 */
-			ImgAlt.altLengthLimit = 100;
+			ImgAlt.altLengthLimit = 150;
 
 			ImgAlt.prototype = new QuickFix();
 			ImgAlt.prototype.constructor = ImgAlt;
@@ -72,7 +72,7 @@
 					var parent = element.getParent()
 
 					var figcaption = new CKEDITOR.dom.element( 'figcaption' )
-					figcaption.appendText(formAttributes.alt)
+					figcaption.appendText(formAttributes.alt.trim())
 
 					if ( parent.getName() != "figure") {
 						var figure = new CKEDITOR.dom.element( 'figure' );
@@ -86,7 +86,7 @@
 						parent.append(figcaption)
 					}
 				} else {
-					element.setAttribute( 'alt', formAttributes.alt );
+					element.setAttribute( 'alt', formAttributes.alt.trim() );
 				}
 				
 

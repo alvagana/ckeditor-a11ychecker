@@ -22,6 +22,28 @@
 				QuickFix.call( this, issue );
 			}
 
+			function getFigCaptionText(e) {
+				var parentChildren = e.getParent().getChildren().toArray();
+				for (let i = 0; i < parentChildren.length; i++) {
+					if (parentChildren[i].$.nodeName != "#text" && parentChildren[i].getName() == "figcaption") {
+						return parentChildren[i].getText();
+					}
+				}
+				return "";
+			}
+
+			function removeFigCaption( parent ) {
+				if ( parent.getName() == "figure") {
+					var parentChildren = parent.getChildren().toArray()
+					for (let i = 0; i < parentChildren.length; i++) {
+						if (parentChildren[i].getName() == "figcaption") {
+							parentChildren[i].remove();
+						}
+					}
+				}
+				return null;
+			}
+
 			/**
 			 * Maximal count of characters in the alt. It might be changed to `0` to prevent
 			 * length validation.
@@ -30,21 +52,33 @@
 			 * @static
 			 */
             ImgAltVerify.altLengthLimit = 100;
-
 			ImgAltVerify.prototype = new QuickFix();
 			ImgAltVerify.prototype.constructor = ImgAltVerify;
 
 			ImgAltVerify.prototype.display = function( form ) {
                 var defaultValue = "Non-decorative";
-                if (this.issue.element.getAttribute("alt") == " ") {
-                    defaultValue = "Decorative"
-                }
+				var figCaption = getFigCaptionText(this.issue.element);
+				var elementAlt = this.issue.element.getAttribute("alt") || " ";
+				var altDefaultValue;
 
 				var dict = {
 					'Non-decorative': 'Non-decorative',
 					'Decorative': 'Decorative',
 					'Caption': 'Caption used'
 				}
+
+				// Set option and alt tag content
+                if (elementAlt == " " && figCaption == "") {
+                    defaultValue = "Decorative"
+					altDefaultValue = " ";
+                } else if (elementAlt == " "  && figCaption != "") {
+					defaultValue = 'Caption'
+					altDefaultValue = figCaption;
+				} else {
+					defaultValue =  "Non-decorative";
+					altDefaultValue = elementAlt;
+				}
+
 				form.setInputs( {
 					type: {
 						type: 'select',
@@ -55,19 +89,20 @@
 					alt: {
 						type: 'text',
 						label: this.lang.altLabel,
-						value: this.issue.element.getAttribute( 'alt' ) || ' '
+						value: altDefaultValue
 					}
 				} );
 			};
 
 			ImgAltVerify.prototype.fix = function( formAttributes, callback ) {
 				var element = this.issue.element
-				console.log(element)
+				var parent = element.getParent()
 				
 				// If selected decorative,
 				// we ignore the form and just set the alt image to blank
 				if (formAttributes.type === 'Decorative') {
 					element.setAttribute( 'alt', " " );
+					removeFigCaption(parent);
 				
 				// Need to check if a caption already exists so we don't append it again.
                 // Logic: check parent nodes children (should be a figure)
@@ -75,7 +110,6 @@
                 // Else, if figure, check if it has caption child, if not, append, if so, change textContent
 				} else if (formAttributes.type === 'Caption') {
 					element.setAttribute( 'alt', " " );
-					var parent = element.getParent()
 
 					var figcaption = new CKEDITOR.dom.element( 'figcaption' )
 					figcaption.appendText(formAttributes.alt)
@@ -99,7 +133,8 @@
                         }
 					}
 				} else {
-					element.setAttribute( 'alt', formAttributes.alt );
+					element.setAttribute( 'alt', formAttributes.alt.trim() );
+					removeFigCaption(parent);
 				}
 				
                 this.issue.element.addClass('alt-tag-verified');
