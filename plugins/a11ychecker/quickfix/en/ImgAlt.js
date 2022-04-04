@@ -96,7 +96,7 @@
 			};
 
 			ImgAlt.prototype.validate = function( formAttributes ) {
-				if (formAttributes.type === 'Non-decorative') {
+				if (formAttributes.type === 'Non-decorative' || formAttributes.type === 'Caption') {
 					var ret = [],
 					proposedAlt = formAttributes.alt + '',
 					imgElem = this.issue && this.issue.element,
@@ -128,7 +128,7 @@
 				return [];
 			};
 
-			ImgAlt.prototype.lang = {"altLabel":"Alternative text","errorTooLong":"Alternative text is too long. It should be up to {limit} characters while your has {length}","errorWhitespace":"Alternative text can not only contain whitespace characters/can not be empty","errorSameAsFileName":"Image alt should not be the same as the file name"};
+			ImgAlt.prototype.lang = {"altLabel":"Alternative text","errorTooLong":"Alternative text is too long. It should be up to {limit} characters while your has {length}","errorWhitespace":"Alternative text/captions can not only contain whitespace characters/can not be empty","errorSameAsFileName":"Image alt should not be the same as the file name"};
 			CKEDITOR.plugins.a11ychecker.quickFixes.add( 'en/ImgAlt', ImgAlt );
 		}
 	} );
