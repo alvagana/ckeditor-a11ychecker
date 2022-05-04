@@ -51,7 +51,15 @@
 
                 var label = new CKEDITOR.dom.element( 'label' );
                 label.appendText(formAttributes.label);
-                label.setAttribute("for", id);
+
+
+                if (id == null) { 
+					console.log("id is null");
+					element.setAttribute("id", formAttributes.label);
+					label.setAttribute("for", formAttributes.label);
+				} else {
+					label.setAttribute("for", id);
+				}
 
                 element.insertBeforeMe(label);
 
