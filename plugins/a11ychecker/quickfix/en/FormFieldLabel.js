@@ -54,7 +54,6 @@
 
 
                 if (id == null) { 
-					console.log("id is null");
 					element.setAttribute("id", formAttributes.label);
 					label.setAttribute("for", formAttributes.label);
 				} else {
