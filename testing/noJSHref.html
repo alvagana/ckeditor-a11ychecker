@@ -1,0 +1,69 @@
+<!-- To use this template, copy the code and insert a new file into the "testing" folder. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>'a' links must not have JS href</title>
+        <script src="../ckeditor.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script src="../scripts/require.js"></script>
+    </head>
+
+    <body>
+    	<textarea id="editor1" name="editor1" >  
+			This is a <a href= "javascript:void(0)"> link </a> that uses javascript in their href location. 
+    	</textarea>
+
+        <script>
+		    $.getJSON('https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail/tests.json');
+		    CKEDITOR.replace('editor1', {
+		      extraPlugins: 'a11ychecker',
+		      removePlugins: 'scayt,wsc',
+		      height: 500,
+		      allowedContent: true,
+		      a11ychecker_quailParams: {
+		        jsonPath: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/plugins/a11ychecker/libs/quail',
+
+                // Guidelines are the tests that you will be running when you click on the icon.
+                // Put the lists of tests here separated by commas.
+                // Check out tests.json in the folder to look at the different tests, and tests-desc.json for an idea of what they look for.
+		        guideline: [
+				    "aMustNotHaveJavascriptHref",
+		        ]
+
+
+		      },
+		      contentsCss: [
+		        'http://cdn.ckeditor.com/4.16.1/full-all/contents.css',
+		        'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/accessibilitychecker/contents.css'
+		      ],
+
+            on: {
+            instanceReady: function() {
+                var editor = this,
+                    a11ychecker = editor._.a11ychecker;
+                if ( a11ychecker.exec ) {
+                    a11yCheckerReady( editor )
+                } else {
+                    a11ychecker.once( 'loaded', function() {
+                        a11yCheckerReady( editor );
+                    } );
+                }
+
+                function a11yCheckerReady( editor ) {
+                    var a11ychecker = editor._.a11ychecker,
+                        a11ycheckerStatic = CKEDITOR.plugins.a11ychecker;
+
+                    // At the end, bind your quick fixes here in the format of 
+                    // a11ychecker.engine.fixesMapping.TEST-NAME = ['QUICK-FIX-NAME'];
+                    // Example: a11ychecker.engine.fixesMapping.tableSummaryDoesNotDuplicateCaption = ['ChangeTableSummary'];
+                    a11ychecker.engine.fixesMapping.aMustNotHaveJavascriptHref = ['aMustNotHaveJShref'];
+                };
+            }
+        }
+		})
+        </script>
+    </body>
+</html>
+
