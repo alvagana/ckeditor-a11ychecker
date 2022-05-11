@@ -30,7 +30,7 @@
 			 * @param {Function} callback Function to be called when a fix was applied. Gets QuickFix object
 			 * as a first parameter.
 			 */
-			 aMustNotHaveJShref.prototype.fix = function( callback ) {
+			 aMustNotHaveJShref.prototype.fix = function( formAttributes, callback ) {
                 var element = this.issue.element
 
                 element.removeAttribute('href');

@@ -13,6 +13,9 @@
     		<a href="google.com">Click here</a><br/>
 
     		<a href="google.com">more</a><br/>
+
+			This is a <a href= "javascript:void(0)"> link </a> that uses javascript in their href location. <br>
+            This is another <a href= "javascript:void(0)"> link </a> that uses javascript in their href location. <br>
     		
     		<a style="border: 2px solid black;"href="google.com">Click</a><br/>
     		
@@ -43,6 +46,7 @@
 		        	//"aMustHaveTitle",
 		        	//"aSuspiciousLinkText",
 		        	"aMustContainText",
+					"aMustNotHaveJavascriptHref",
     				//"headerTextIsTooLong",
     				//"documentTitleNotEmpty"
 
@@ -72,6 +76,7 @@
 		                a11ychecker.engine.fixesMapping.aSuspiciousLinkText = [ 'SuspiciousLinkFix'];
 		                a11ychecker.engine.fixesMapping.aMustHaveTitle = [ 'LinkTitleFix'];
 						a11ychecker.engine.fixesMapping.aMustContainText = [ 'EmptyLink' ];
+						a11ychecker.engine.fixesMapping.aMustNotHaveJavascriptHref = [ 'aMustNotHaveJShref' ];
             };
         }
     }	         
